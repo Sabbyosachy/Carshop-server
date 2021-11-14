@@ -73,6 +73,7 @@ async function run(){
        res.json(result);
      });
 
+     //Get Users
      app.get('/users',async(req,res)=>{
       const cursor = usersCollection.find({});
       const result=await cursor.toArray();
@@ -124,6 +125,8 @@ async function run(){
         const result=await orderCollection.deleteOne(query);
         res.send(result);
       });
+      
+      //Delete Products
        
       app.delete('/delproducts/:id',async(req,res)=>{
         const id=req.params.id;
