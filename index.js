@@ -99,6 +99,19 @@ async function run(){
        const result=await usersCollection.updateOne(filter,updateDoc);
        res.json(result);
      })
+     
+    //Get Users by email
+    app.get('/users/:email',async(req,res)=>{
+      const email=req.params.email;
+      const query={email:email};
+      const user=await usersCollection.findOne(query);
+      let isAdmin=false;
+      if(user?.role==='Admin'){
+        isAdmin=true;
+      }
+      res.json({Admin:isAdmin});
+    })
+
 
      //Get Order
 
